@@ -1,0 +1,11 @@
+h1 {
+    color: red;
+}
+
+li {
+    list-style-type: "\1F44D";
+}
+
+li em {
+    color: rgb(51, 153, 114);
+}   
