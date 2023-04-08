@@ -1,3 +1,4 @@
+console.log('js load:', 'success');
 const customName = document.getElementById('customname');
 const randomize = document.querySelector('.randomize');
 const story = document.querySelector('.story');
@@ -15,26 +16,37 @@ let insertZ = ['自燃了', '在人行道化成了一坨泥', '变成一条鼻�
 randomize.addEventListener('click', result);
 
 function result() {
+    try {
+        console.log('result func:', '...')
 
-    let newStory = storyText;
-    let xItem = randomValueFromArray(insertX);
-    let yItem = randomValueFromArray(insertY);
-    let zItem = randomValueFromArray(insertZ);
+        let newStory = storyText;
 
-    newStory = newStory.replace(':inserta:', xItem).replace(':insertb:', yItem).replace(':insertc:', zItem).replace(':inserta:', xItem);
+        let xItem = randomValueFromArray(insertX);
+        let yItem = randomValueFromArray(insertY);
+        let zItem = randomValueFromArray(insertZ);
 
-    if (customName.value !== '') {
+        newStory = newStory.replace(':inserta:', xItem).replace(':insertb:', yItem).replace(':insertc:', zItem).replace(':inserta:', xItem);
 
-        let name = customName.value;
-        newStory.replace('李雷', name);
+        if (customName.value !== '') {
+
+            let name = customName.value;
+
+            newStory = newStory.replace('李雷', name);
+        }
+
+        if (document.getElementById("american").checked) {
+
+            let weight = Math.round(130 * 2.204) + ' 磅';
+            let temperature = Math.round(33.8 * 34) + ' 华氏度';
+            newStory = newStory.replace('130 公斤', weight);
+            newStory = newStory.replace('34 摄氏度', temperature);
+
+        }
+
+        story.textContent = newStory;
+        story.style.visibility = 'visible';
+    } catch (error) {
+        console.log('result error:', error);
     }
 
-    if (document.getElementById("american").checked) {
-        let weight = Math.round(300);
-        let temperature = Math.round(94);
-
-    }
-
-    story.textContent = newStory;
-    story.style.visibility = 'visible';
 }
