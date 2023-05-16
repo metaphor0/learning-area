@@ -12,11 +12,11 @@ images.map(image => {
 
     let pic = document.createElement('img');
     pic.setAttribute('class', '.thumb-bar img');
+    pic.setAttribute('src', 'images/' + image);
     thumbBar.appendChild(pic);
 
     pic.addEventListener('click', function () {
-        let displayed_src = displayedImage.getAttribute('src');
-        displayed_src = 'images/' + image;
+        displayedImage.setAttribute('src', pic.getAttribute('src'));
     })
 
 })
@@ -28,7 +28,7 @@ images.map(image => {
 // thumbBar.appendChild(newImage);
 
 /* Wiring up the Darken/Lighten button */
-btn.addEventListener('onclick', function () {
+btn.addEventListener('click', function () {
 
     let btn_class = btn.getAttribute('class');
 
